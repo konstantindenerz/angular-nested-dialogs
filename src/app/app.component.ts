@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {AlertService} from './alert.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.less']
+  styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'angular-dialog-in-dialog';
+  showDialog = false;
+
+  constructor(readonly alertService: AlertService) {
+  }
+
+  public showAlert() {
+    this.alertService.show('foobar alert');
+  }
 }

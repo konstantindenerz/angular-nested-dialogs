@@ -1,0 +1,13 @@
+<ng-container *ngIf="!nested">
+  <div class="backdrop" (click)="hide.emit()"></div>
+</ng-container>
+<ng-container *ngIf="nested">
+  <div class="backdrop transparent"></div>
+  <div class="background" @zoomInOut (@zoomInOut.done)="animationDone($event)"></div>
+</ng-container>
+<div class="content-container">
+  <div class="content" [class.nested]="nested" [@fadeInOut]="showContent ? 'true' : 'false'">
+    <app-alert-dialog></app-alert-dialog>
+    <ng-content></ng-content>
+  </div>
+</div>
